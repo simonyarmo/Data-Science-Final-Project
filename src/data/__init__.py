@@ -1,0 +1,1 @@
+# Data package for collecting and processing financial data 
