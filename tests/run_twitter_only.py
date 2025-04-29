@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import os
 
-from scrapers.twitter_scraper import TwitterScraper
+from scrapers.twitter_scraper import TwitterScraper, TwitterScraperV2
 
 
 def main():
@@ -10,7 +10,7 @@ def main():
     os.makedirs("tests/outputs", exist_ok=True)
     out_csv = "tests/outputs/test_twitter.csv"
 
-    scraper = TwitterScraper()
+    scraper = TwitterScraperV2() # if v2, put the bearer token here, else put nothing
     df = scraper.run(
         queries=test_queries,
         limit=limit,
