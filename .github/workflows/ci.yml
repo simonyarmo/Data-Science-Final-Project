@@ -25,15 +25,14 @@ jobs:
         source venv/bin/activate
         pip install --upgrade pip
         pip install -r requirements.txt
-        pip install pytest        # if you’re using pytest
+        pip install pytest
+
+    - name: Add src/ to PYTHONPATH
+      run: echo "PYTHONPATH=$PWD/src" >> $GITHUB_ENV
 
     - name: Run financial collector smoke-test
       run: |
         source venv/bin/activate
         python run_financial_only.py
 
-    # OR, if you converted it to a pytest:
-    #- name: Run pytest
-    #  run: |
-    #    source venv/bin/activate
-    #    pytest -q
+
