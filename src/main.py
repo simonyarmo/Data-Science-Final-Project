@@ -306,7 +306,7 @@ def generate_recommendations(sentiment_df, financial_df, stock_info):
         analyzer = SentimentAnalyzer()
         recommendations = analyzer.generate_investment_recommendations(
             sentiment_df=ticker_sentiment,
-            financial_data_df=financial_df,
+            financial_df=financial_df,
             company_info_dict=stock_info
         )
 
