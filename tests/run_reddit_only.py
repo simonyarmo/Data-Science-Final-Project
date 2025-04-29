@@ -1,9 +1,7 @@
 #!/usr/bin/env python3
 import os
-import sys
 
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "src")))
-from data.reddit_scraper import RedditScraper
+from scrapers.reddit_scraper import RedditScraper
 
 
 def main():
@@ -21,7 +19,7 @@ def main():
         output_path=out_csv
     )
 
-    assert not df.empty, "[WARNING] No Reddit posts scraped!"
+    assert not df.empty, "[WARNING] No Reddit posts scraped"
     assert os.path.exists(out_csv), "[WARNING] Output CSV was not written"
     assert "ticker_symbols" in df.columns, "[WARNING] Missing ticker_symbols column"
 

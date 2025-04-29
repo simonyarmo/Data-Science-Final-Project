@@ -1,9 +1,7 @@
 #!/usr/bin/env python3
 import os
 import pprint
-import sys
 
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "src")))
 from data.financial_data import FinancialDataCollector
 
 
@@ -23,7 +21,7 @@ def main():
         output_path=out_csv
     )
 
-    assert not df.empty, "[WARNING] No rows fetched!"
+    assert not df.empty, "[WARNING] No rows fetched"
     for t in tickers:
         assert t in info, f"[WARNING] Missing info for {t}"
 
