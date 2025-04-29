@@ -34,5 +34,12 @@ jobs:
       run: |
         source venv/bin/activate
         python run_financial_only.py
-
-
+        
+    - name: Run Reddit scraper smoke-test
+      env:
+        REDDIT_CLIENT_ID: ${{ secrets.REDDIT_CLIENT_ID }}
+        REDDIT_CLIENT_SECRET: ${{ secrets.REDDIT_CLIENT_SECRET }}
+        REDDIT_USER_AGENT: ${{ secrets.REDDIT_USER_AGENT }}
+      run: |
+        source venv/bin/activate
+        python run_reddit_only.py
