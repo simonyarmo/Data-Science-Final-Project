@@ -228,8 +228,10 @@ class FinancialDataCollector:
             
         try:
             # Create directory if it doesn't exist
-            os.makedirs(os.path.dirname(output_path), exist_ok=True)
-            
+            folder = os.path.dirname(output_path)
+            if folder:
+                os.makedirs(folder, exist_ok=True)
+
             # Save stock data to CSV
             df.to_csv(output_path, index=False)
             logger.info(f"Stock data saved to {output_path}")

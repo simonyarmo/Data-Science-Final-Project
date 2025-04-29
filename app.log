@@ -1,0 +1,37 @@
+2025-04-29 12:06:20,911 - config - INFO - Financial data collector initialized
+2025-04-29 12:06:20,911 - config - INFO - Getting stock data for 3 tickers from 2023-01-01 to 2023-03-31
+2025-04-29 12:06:24,632 - config - INFO - Retrieved data for AAPL: 61 rows
+2025-04-29 12:06:24,897 - config - INFO - Retrieved data for MSFT: 61 rows
+2025-04-29 12:06:25,160 - config - INFO - Retrieved data for GOOGL: 61 rows
+2025-04-29 12:06:25,160 - config - INFO - Getting company info for 3 tickers
+2025-04-29 12:06:25,405 - config - INFO - Retrieved info for AAPL
+2025-04-29 12:06:25,691 - config - INFO - Retrieved info for MSFT
+2025-04-29 12:06:25,940 - config - INFO - Retrieved info for GOOGL
+2025-04-29 12:06:25,940 - config - INFO - Getting data for 6 market indices from 2023-01-01 to 2023-03-31
+2025-04-29 12:06:26,184 - config - INFO - Retrieved data for S&P 500: 61 rows
+2025-04-29 12:06:26,424 - config - INFO - Retrieved data for Dow Jones: 61 rows
+2025-04-29 12:06:26,651 - config - INFO - Retrieved data for NASDAQ: 61 rows
+2025-04-29 12:06:26,889 - config - INFO - Retrieved data for VIX: 61 rows
+2025-04-29 12:06:27,152 - config - INFO - Retrieved data for FTSE 100: 63 rows
+2025-04-29 12:06:27,402 - config - INFO - Retrieved data for Nikkei 225: 59 rows
+2025-04-29 12:06:27,413 - config - INFO - Combined stock data: 549 rows
+2025-04-29 12:06:27,414 - config - ERROR - Error saving data: [WinError 3] The system cannot find the path specified: ''
+2025-04-29 12:11:57,925 - config - INFO - Financial data collector initialized
+2025-04-29 12:11:57,925 - config - INFO - Getting stock data for 3 tickers from 2023-01-01 to 2023-03-31
+2025-04-29 12:11:58,283 - config - INFO - Retrieved data for AAPL: 61 rows
+2025-04-29 12:11:58,496 - config - INFO - Retrieved data for MSFT: 61 rows
+2025-04-29 12:11:58,677 - config - INFO - Retrieved data for GOOGL: 61 rows
+2025-04-29 12:11:58,677 - config - INFO - Getting company info for 3 tickers
+2025-04-29 12:11:58,989 - config - INFO - Retrieved info for AAPL
+2025-04-29 12:11:59,283 - config - INFO - Retrieved info for MSFT
+2025-04-29 12:11:59,600 - config - INFO - Retrieved info for GOOGL
+2025-04-29 12:11:59,601 - config - INFO - Getting data for 6 market indices from 2023-01-01 to 2023-03-31
+2025-04-29 12:11:59,670 - config - INFO - Retrieved data for S&P 500: 61 rows
+2025-04-29 12:11:59,743 - config - INFO - Retrieved data for Dow Jones: 61 rows
+2025-04-29 12:11:59,823 - config - INFO - Retrieved data for NASDAQ: 61 rows
+2025-04-29 12:11:59,898 - config - INFO - Retrieved data for VIX: 61 rows
+2025-04-29 12:12:00,025 - config - INFO - Retrieved data for FTSE 100: 63 rows
+2025-04-29 12:12:00,147 - config - INFO - Retrieved data for Nikkei 225: 59 rows
+2025-04-29 12:12:00,151 - config - INFO - Combined stock data: 549 rows
+2025-04-29 12:12:00,167 - config - INFO - Stock data saved to test_financial.csv
+2025-04-29 12:12:00,168 - config - INFO - Stock info saved to test_financial_info.json
