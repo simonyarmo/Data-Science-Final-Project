@@ -185,6 +185,7 @@ def analyze_sentiment(args, twitter_df):
                     text_column='text',
                     batch_size=5  # Smaller batch size to avoid rate limits
                 )
+                twitter_sentiment_df['mentioned_tickers'] = twitter_df['ticker_symbols']
                 logger.info(f"Completed sentiment analysis for {len(twitter_sentiment_df)} tweets")
             except Exception as e:
                 logger.error(f"Error analyzing Twitter sentiment: {str(e)}")
