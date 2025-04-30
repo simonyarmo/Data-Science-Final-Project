@@ -58,3 +58,9 @@
 2025-04-30 16:28:01,601 - config - INFO - Loading FinBERT model: ProsusAI/finbert
 2025-04-30 16:28:03,170 - config - INFO - FinBERT sentiment pipeline initialized
 2025-04-30 16:31:34,070 - config - INFO - Sentiment analysis completed for 3794 items
+2025-04-30 17:12:43,456 - config - INFO - Loading FinBERT model: ProsusAI/finbert
+2025-04-30 17:12:45,062 - config - INFO - FinBERT sentiment pipeline initialized
+2025-04-30 17:15:43,018 - config - INFO - Sentiment analysis completed for 2594 items
+2025-04-30 17:31:28,642 - config - INFO - Loading FinBERT model: ProsusAI/finbert
+2025-04-30 17:31:30,193 - config - INFO - FinBERT sentiment pipeline initialized
+2025-04-30 17:36:14,885 - config - INFO - Sentiment analysis completed for 4046 items

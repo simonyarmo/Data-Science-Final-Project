@@ -58,7 +58,7 @@ class SentimentAnalyzer:
                     'sentiment_category': cat,
                     'confidence': max(score_map.values()),
                     # 'mentioned_tickers': [],
-                    'key_points': []
+                    # 'key_points': []
                 })
         return results
 
@@ -80,7 +80,7 @@ class SentimentAnalyzer:
         df['sentiment_category'] = [r['sentiment_category'] for r in results]
         df['confidence'] = [r['confidence'] for r in results]
         # df['mentioned_tickers'] = [[] for _ in results]
-        df['key_points'] = [[] for _ in results]
+        # df['key_points'] = [[] for _ in results]
         logger.info(f"Sentiment analysis completed for {len(df)} items")
         return df
 

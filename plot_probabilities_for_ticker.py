@@ -1,8 +1,8 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
-CSV_PATH = "results/finnhub_with_sentiment.csv"
-TICKER = "TSLA"
+CSV_PATH = "results/merged2_with_sentiment.csv"
+TICKER = "BA"
 DATE_COLUMN = "as_of_date"
 ROLLING_WINDOW_30 = 30  # Number of posts for moving average
 ROLLING_WINDOW_70 = 70  # Number of posts for moving average
