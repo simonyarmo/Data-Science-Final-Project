@@ -1,5 +1,6 @@
 import sys
 import os
+import argparse
 
 # Add the parent directory to the Python path
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -52,6 +53,7 @@ class NewsCollector:
             
             # Log the exact request being made
             self.logger.info(f"Making request for {ticker} with params: {params}")
+            self.logger.info(f"Date range: {start_date.strftime('%Y-%m-%d')} to {end_date.strftime('%Y-%m-%d')}")
             
             response = requests.get(
                 self.base_url,
@@ -63,6 +65,7 @@ class NewsCollector:
             # Log the response status and headers
             self.logger.info(f"Response status: {response.status_code}")
             self.logger.info(f"Response headers: {response.headers}")
+            self.logger.info(f"Response content: {response.text[:500]}")  # Log first 500 chars of response
             
             response.raise_for_status()
             
@@ -180,16 +183,24 @@ class NewsCollector:
         
         return pd.DataFrame(columns=['as_of_date', 'ticker', 'headline', 'news_text', 'source', 'url'])
 
-    def save_news(self, df: pd.DataFrame) -> str:
+    def save_news(self, df: pd.DataFrame, custom_filename: str = None) -> str:
         """
         Save the news DataFrame to CSV and JSON
+        
+        Args:
+            df: DataFrame containing news articles
+            custom_filename: Optional custom filename (without extension)
         """
         if df.empty:
             self.logger.warning("No news to save")
             return ""
             
-        timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
-        base_filename = f'finnhub_news_{timestamp}'
+        if custom_filename:
+            # Remove .csv extension if present
+            base_filename = custom_filename.replace('.csv', '')
+        else:
+            timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+            base_filename = f'finnhub_news_{timestamp}'
         
         # Save CSV
         csv_file = os.path.join(self.data_dir, f'{base_filename}.csv')
@@ -198,7 +209,7 @@ class NewsCollector:
         # Save JSON with additional metadata
         json_data = {
             'metadata': {
-                'collection_time': timestamp,
+                'collection_time': datetime.now().strftime('%Y%m%d_%H%M%S'),
                 'total_articles': len(df),
                 'tickers_covered': list(df['ticker'].unique()),
                 'date_range': {
@@ -220,13 +231,46 @@ def main():
     """
     Main function to run the news collector
     """
+    # Set up argument parser
+    parser = argparse.ArgumentParser(description='Collect financial news using Finnhub API')
+    parser.add_argument('--ticker', type=str, help='Single ticker symbol to collect news for')
+    parser.add_argument('--start-date', type=str, help='Start date in YYYY-MM-DD format')
+    parser.add_argument('--end-date', type=str, help='End date in YYYY-MM-DD format')
+    parser.add_argument('--all', action='store_true', help='Collect news for all target tickers')
+    parser.add_argument('--output', type=str, help='Custom output filename (without extension)')
+    
+    args = parser.parse_args()
+    
     # Get API key from config
     api_key = config.FINNHUB_API_KEY
     if not api_key:
         print("Error: FINNHUB_API_KEY not found in config")
         return
     
+    # Create collector instance
     collector = NewsCollector(api_key)
+    
+    # Override dates if provided
+    if args.start_date:
+        try:
+            collector.start_date = datetime.strptime(args.start_date, '%Y-%m-%d')
+        except ValueError:
+            print(f"Error: Invalid start date format. Use YYYY-MM-DD")
+            return
+            
+    if args.end_date:
+        try:
+            collector.end_date = datetime.strptime(args.end_date, '%Y-%m-%d')
+        except ValueError:
+            print(f"Error: Invalid end date format. Use YYYY-MM-DD")
+            return
+    
+    # Override tickers if provided
+    if args.ticker:
+        collector.target_tickers = [args.ticker.upper()]
+    elif not args.all:
+        print("Error: Either specify a ticker with --ticker or use --all for all tickers")
+        return
     
     print("Starting news collection...")
     print(f"Time period: {collector.start_date.strftime('%Y-%m-%d')} to {collector.end_date.strftime('%Y-%m-%d')}")
@@ -235,11 +279,18 @@ def main():
     news_df = collector.collect_news()
     
     if not news_df.empty:
-        saved_file = collector.save_news(news_df)
+        saved_file = collector.save_news(news_df, args.output)
         
         print(f"\nCollected {len(news_df)} news articles")
         print("\nNews distribution by ticker:")
         print(news_df['ticker'].value_counts())
+        
+        print("\nDate range coverage:")
+        for ticker in news_df['ticker'].unique():
+            ticker_df = news_df[news_df['ticker'] == ticker]
+            min_date = pd.to_datetime(ticker_df['as_of_date']).min()
+            max_date = pd.to_datetime(ticker_df['as_of_date']).max()
+            print(f"{ticker}: {min_date.strftime('%Y-%m-%d')} to {max_date.strftime('%Y-%m-%d')}")
         
         print("\nMost recent news items:")
         pd.set_option('display.max_columns', None)
