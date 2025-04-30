@@ -57,7 +57,7 @@ class SentimentAnalyzer:
                     'neutral_probability': score_map.get('neutral', 0),
                     'sentiment_category': cat,
                     'confidence': max(score_map.values()),
-                    'mentioned_tickers': [],
+                    # 'mentioned_tickers': [],
                     'key_points': []
                 })
         return results
@@ -79,7 +79,7 @@ class SentimentAnalyzer:
         df['neutral_probability'] = [r['neutral_probability'] for r in results]
         df['sentiment_category'] = [r['sentiment_category'] for r in results]
         df['confidence'] = [r['confidence'] for r in results]
-        df['mentioned_tickers'] = [[] for _ in results]
+        # df['mentioned_tickers'] = [[] for _ in results]
         df['key_points'] = [[] for _ in results]
         logger.info(f"Sentiment analysis completed for {len(df)} items")
         return df
@@ -88,15 +88,15 @@ class SentimentAnalyzer:
         """
         Aggregate sentiment by ticker: mean, count, std, std_error, confidence intervals.
         """
-        if df.empty or 'mentioned_tickers' not in df.columns:
+        if df.empty or 'ticker' not in df.columns:
             return pd.DataFrame()
-        df_with = df[df['mentioned_tickers'].apply(lambda x: bool(x) if isinstance(x, list) else False)]
+        df_with = df[df['ticker'].apply(lambda x: bool(x) if isinstance(x, list) else False)]
         if df_with.empty:
             return pd.DataFrame()
-        exploded = df_with.explode('mentioned_tickers')
+        exploded = df_with.explode('ticker')
         if tickers:
-            exploded = exploded[exploded['mentioned_tickers'].isin(tickers)]
-        agg = exploded.groupby('mentioned_tickers').agg({
+            exploded = exploded[exploded['ticker'].isin(tickers)]
+        agg = exploded.groupby('ticker').agg({
             'sentiment_score': ['mean', 'count', 'std'],
             'bullish_probability': 'mean',
             'bearish_probability': 'mean',
@@ -132,8 +132,8 @@ class SentimentAnalyzer:
         # Compute recent price
         recent = financial_df.sort_values('Date').groupby('Ticker').tail(1)
         for _, row in recent.iterrows():
-            ticker = row['Ticker']
-            sentiment_row = sentiment_df[sentiment_df['mentioned_tickers'] == ticker]
+            ticker = row['ticker']
+            sentiment_row = sentiment_df[sentiment_df['ticker'] == ticker]
             score_mean = (sentiment_row['sentiment_score_mean'].iloc[0]
                           if not sentiment_row.empty else 0)
             price = row['Close']

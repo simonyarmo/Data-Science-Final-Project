@@ -46,10 +46,13 @@ TWITTER_SEARCH_QUERIES = [
     "#stockmarket", "#finance", "#WallStreetBets", "#crypto"
 ]
 
+STOCKTWITS_SYMBOLS = ["AAPL", "MSFT", "GOOGL"]
+
 # Data storage settings
 DATA_DIR = "data"
 REDDIT_DATA_PATH = os.path.join(DATA_DIR, "reddit_data.csv")
 TWITTER_DATA_PATH = os.path.join(DATA_DIR, "twitter_data.csv")
+STOCKTWITS_DATA_PATH = os.path.join(DATA_DIR, "stocktwits_data.csv")
 FINANCIAL_DATA_PATH = os.path.join(DATA_DIR, "financial_data.csv")
 SENTIMENT_DATA_PATH = os.path.join(DATA_DIR, "sentiment_data.csv")
 RECOMMENDATIONS_PATH = os.path.join(DATA_DIR, "recommendations.json")
