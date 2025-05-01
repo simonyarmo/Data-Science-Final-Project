@@ -34,7 +34,7 @@ src/
 │   ├── Nvidia_Analysis.ipynb
 │   ├── Boeing.ipynb
 │   ├── sentiment_analyzer.py
-│   └── train_stock_signal.py
+│   └── run_sentiment_only.py
 ├── scrapers/          # Data collection modules
 │   ├── news_scraper.py
 │   └── merge_news.py
