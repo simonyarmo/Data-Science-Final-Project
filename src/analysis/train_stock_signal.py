@@ -1,3 +1,14 @@
+"""
+This file represents our initial framework for training stock signal models.
+It served as a starting point for our sentiment analysis approach.
+However, the final models and analysis were ultimately implemented and refined
+in the individual Jupyter notebooks (Tesla_Analysis.ipynb, Nvidia_Analysis.ipynb,
+and Boeing.ipynb) to allow for more interactive development and visualization
+of results.
+
+This file is kept for historical reference but is not used in the final analysis.
+"""
+
 #!/usr/bin/env python3
 import pandas as pd
 import numpy as np
