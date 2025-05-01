@@ -18,6 +18,10 @@ ENV/
 *.swp
 *.swo
 
+# Environment files
+.env
+.env.*
+
 # Log files
 *.log
 
