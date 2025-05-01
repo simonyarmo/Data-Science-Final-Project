@@ -65,4 +65,5 @@ The notebooks use the following data files from the `src/data/processed/` direct
 - `merged2_with_sentiment.csv`: Output from FinBERT sentiment analysis
 - Additional feature engineering and data analysis was performed directly in the notebooks
 
-For more detailed information about the project methodology and results, please refer to our Medium article: [A Sentiment-Driven ML Framework for Predictive Trading](https://medium.com/@abarr4728/a-sentiment-driven-ml-framework-for-predictive-trading-289ec2bca900)
+For more detailed information about the project methodology and results, please refer to our Medium article: 
+[A Sentiment-Driven ML Framework for Predictive Trading](https://medium.com/@abarr4728/a-sentiment-driven-ml-framework-for-predictive-trading-289ec2bca900)
