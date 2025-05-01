@@ -173,20 +173,4 @@ class SentimentAnalyzer:
         return recommendations
 
 
-if __name__ == "__main__":
-    # Example usage
-    from src.data.financial_data import FinancialDataCollector
 
-    # Load some example data (you may need to adapt this based on your actual data)
-    analyzer = SentimentAnalyzer()
-
-    # Sample texts for testing
-    sample_texts = [
-        "AAPL is going to crush earnings this quarter. Their new iPhone is amazing and selling out everywhere.",
-        "TSLA is overvalued and facing increasing competition. I'm bearish on the stock for Q3.",
-        "MSFT cloud business continues to grow steadily. Neutral but leaning positive for the next 6 months."
-    ]
-
-    # Run sentiment analysis on sample texts
-    results = analyzer.analyze_text_batch(sample_texts)
-    print(json.dumps(results, indent=2))
