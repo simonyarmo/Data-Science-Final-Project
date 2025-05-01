@@ -49,4 +49,20 @@ src/
 - Pandas for data manipulation
 - FinBERT for sentiment analysis
 - Finnhub API for financial news data
-- Jupyter Notebooks for analysis and visualization 
+- Jupyter Notebooks for analysis and visualization
+
+## Notebooks
+The analysis is primarily conducted through Jupyter notebooks, which are organized as follows:
+
+- `src/analysis/Tesla_Analysis.ipynb`: Analyzes Tesla (TSLA) news sentiment and stock performance
+- `src/analysis/Nvidia_Analysis.ipynb`: Analyzes NVIDIA (NVDA) news sentiment and stock performance
+- `src/analysis/Boeing.ipynb`: Analyzes Boeing (BA) news sentiment and stock performance
+
+**Note**: The notebooks were originally developed and run on Google Colab, and then uploaded to this repository. As a result, some file paths in the notebooks may reference Colab's file system structure. When running these notebooks locally, you may need to adjust the file paths accordingly to match your local directory structure.
+
+The notebooks use the following data files from the `src/data/processed/` directory:
+- `Boeing Company.csv`, `Tesla.csv`, `NVIDIA.csv`: Stock price data for each company
+- `merged2_with_sentiment.csv`: Output from FinBERT sentiment analysis
+- Additional feature engineering and data analysis was performed directly in the notebooks
+
+For more detailed information about the project methodology and results, please refer to our Medium article: [A Sentiment-Driven ML Framework for Predictive Trading](https://medium.com/@abarr4728/a-sentiment-driven-ml-framework-for-predictive-trading-289ec2bca900)
