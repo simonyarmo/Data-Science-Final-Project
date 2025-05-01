@@ -45,6 +45,8 @@ def preprocess(sentiment_csv: str, financial_csv: str) -> pd.DataFrame:
                   left_on='Date', right_on='date',
                   how='inner')
     df = df.sort_values('Date').reset_index(drop=True)
+    df.to_csv("merged_ba_daily.csv", index=False)
+    print("Wrote merged_ba_daily.csv with columns:", list(df.columns))
     return df
 
 def make_labels(df: pd.DataFrame, threshold: float = 0.001) -> pd.DataFrame:
