@@ -22,7 +22,7 @@ def merge_news_files(input_dir: str = '../data/raw', output_dir: str = '../data/
     os.makedirs(output_dir, exist_ok=True)
     
     # List of files to merge
-    files_to_merge = ['tesla_news.csv', 'nvidia_news.csv', 'ba_news.csv']
+    files_to_merge = ['tesla_news.csv', 'nvda_news.csv', 'ba_news.csv']
     
     # Initialize empty list to store dataframes
     dfs = []
