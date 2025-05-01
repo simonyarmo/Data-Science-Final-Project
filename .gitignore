@@ -32,4 +32,4 @@ ENV/
 *.pdf
 
 # Results folder
-results/ 
+/results/ 
