@@ -29,4 +29,7 @@ ENV/
 *.csv
 *.json
 *.png
-*.pdf 
+*.pdf
+
+# Results folder
+results/ 
